@@ -60,6 +60,10 @@ function ServiceDropDown($document) {
    */
   var closeDropdown = function (evt) {
 
+    // This method may still be called during the same mouse event that
+    // unbound this event handler. So check openScope before proceeding.
+    if (!openScope) { return; }
+
     // Get the current toggleElement
     var toggleElement = openScope.getToggleElement();
     
